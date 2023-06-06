@@ -26,7 +26,6 @@ def import_word2vec():
     api.load('word2vec-google-news-300')
     
 if __name__ == '__main__':
-    # install_dependencies()
-    # download_dataset()
-    print(os.environ['GENSIM_DATA_DIR'])
+    install_dependencies()
+    download_dataset()
     import_word2vec()
