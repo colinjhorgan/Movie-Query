@@ -1,6 +1,9 @@
 import os
 import subprocess
 
+BASE_PATH = os.path.dirname(os.path.realpath(__file__))
+os.environ['GENSIM_DATA_DIR'] = os.path.join(BASE_PATH, 'model') #execute before gensim import so data dir is detected
+
 import gensim.downloader as api
 
 
@@ -20,10 +23,10 @@ def download_dataset():
 def import_word2vec():
     print("Downloading word2vec model")
     os.makedirs('model', exist_ok=True)
-    os.chdir('model')
-    # api.load('word2vec-google-news-300', return_path=True)
+    api.load('word2vec-google-news-300')
     
 if __name__ == '__main__':
-    install_dependencies()
-    download_dataset()
+    # install_dependencies()
+    # download_dataset()
+    print(os.environ['GENSIM_DATA_DIR'])
     import_word2vec()
